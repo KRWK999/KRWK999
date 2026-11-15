@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="de" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KRWK 999 // OFFICIAL EPK & BOOKING HUB [160 BPM SCHRANZ]</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Space Grotesk, JetBrains Mono, Black Ops One -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=JetBrains+Mono:wght@400;600;700;800&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        stencil: ['"Black Ops One"', 'Impact', 'sans-serif'],
+                        sans: ['"Space Grotesk"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    colors: {
+                        concrete: {
+                            950: '#09090b',
+                            900: '#0f0f12',
+                            850: '#141418',
+                            800: '#1c1c21',
+                            700: '#2a2a30',
+                        },
+                        crimson: {
+                            600: '#d92626',
+                            500: '#ef4444',
+                            900: '#450a0a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Industrial Brutalist Custom Styling & Noise Texture */
+        body {
+            background-color: #09090b;
+            color: #e5e5e5;
+            overflow-x: hidden;
+        }
+
+        /* Subtle SVG Noise Overlay for Gritty Concrete Feel */
+        .noise-bg {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 50;
+            opacity: 0.045;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* Scanline subtle horizontal texture */
+        .scanlines {
+            background: linear-gradient(
+                to bottom,
+                rgba(255,255,255,0),
+                rgba(255,255,255,0) 50%,
+                rgba(0,0,0,0.28) 50%,
+                rgba(0,0,0,0.28)
+            );
+            background-size: 100% 4px;
+        }
+
+        /* Industrial Hazard Stripe Border */
+        .hazard-bar {
+            background: repeating-linear-gradient(
+                -45deg,
+                #d92626,
+                #d92626 10px,
+                #09090b 10px,
+                #09090b 20px
+            );
+        }
+
+        /* Distressed Concrete Card Glow */
+        .brutal-card {
+            background-color: #111114;
+            border: 1px solid #2a2a30;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .brutal-card:hover {
+            border-color: #d92626;
+        }
+
+        /* Custom 999 Emblem Glow & Chiseled Edge */
+        .emblem-999 {
+            filter: drop-shadow(0 0 18px rgba(217, 38, 38, 0.32));
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #09090b;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2a2a30;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #d92626;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-crimson-600 selection:text-white">
+
+    <!-- Gritty Noise Overlay -->
+    <div class="noise-bg"></div>
+
+    <!-- Toast Notification Banner (No alert() used) -->
+    <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="bg-crimson-600 text-white font-mono text-xs sm:text-sm font-bold px-5 py-3.5 border-2 border-white shadow-2xl flex items-center gap-3 uppercase tracking-wider">
+            <span class="inline-block w-2.5 h-2.5 bg-white animate-ping"></span>
+            <span id="toast-message">COPIED TO CLIPBOARD</span>
+        </div>
+    </div>
+
+    <!-- Top Navigation Bar -->
+    <header class="sticky top-0 z-40 bg-concrete-950/95 backdrop-blur-md border-b border-concrete-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <!-- Brand Monogram with Custom Stylized 999 SVG -->
+            <a href="#top" class="flex items-center gap-3 group">
+                <div class="w-12 h-9 bg-concrete-900 flex items-center justify-center border border-crimson-600/80 group-hover:border-white transition-colors px-1.5">
+                    <svg viewBox="0 0 210 100" class="w-full h-full overflow-visible" aria-label="999 Emblem">
+                        <!-- First Aggressive Slanted 9 -->
+                        <g transform="translate(8, 6)">
+                            <path d="M22,4 L64,4 L56,48 L36,48 L22,92 L4,92 L24,48 L12,48 Z M31,17 L26,35 L45,35 L49,17 Z" fill="#d92626" class="group-hover:fill-white transition-colors"/>
+                            <!-- Rugged Crack Accent -->
+                            <path d="M18,24 L27,27 M38,48 L31,56" stroke="#09090b" stroke-width="2.5"/>
+                        </g>
+                        <!-- Second Aggressive Slanted 9 -->
+                        <g transform="translate(72, 6)">
+                            <path d="M22,4 L64,4 L56,48 L36,48 L22,92 L4,92 L24,48 L12,48 Z M31,17 L26,35 L45,35 L49,17 Z" fill="#d92626" class="group-hover:fill-white transition-colors"/>
+                            <path d="M46,12 L42,22 M19,65 L28,61" stroke="#09090b" stroke-width="2.5"/>
+                        </g>
+                        <!-- Third Aggressive Slanted 9 -->
+                        <g transform="translate(136, 6)">
+                            <path d="M22,4 L64,4 L56,48 L36,48 L22,92 L4,92 L24,48 L12,48 Z M31,17 L26,35 L45,35 L49,17 Z" fill="#d92626" class="group-hover:fill-white transition-colors"/>
+                            <path d="M24,42 L34,39 M14,78 L22,74" stroke="#09090b" stroke-width="2.5"/>
+                        </g>
+                    </svg>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-stencil text-lg tracking-wider text-white leading-none">KRWK 999</span>
+                    <span class="font-mono text-[10px] text-neutral-400 tracking-widest uppercase">EPK // PRESS KIT</span>
+                </div>
+            </a>
+
+            <!-- Desktop Section Links -->
+            <nav class="hidden md:flex items-center gap-6 font-mono text-xs uppercase tracking-widest text-neutral-400">
+                <a href="#bio" class="hover:text-crimson-500 transition-colors">[01. BIO]</a>
+                <a href="#booking" class="text-white bg-crimson-600/20 border border-crimson-600 px-3 py-1.5 hover:bg-crimson-600 transition-colors">[02. BOOK NOW]</a>
+            </nav>
+
+            <!-- Language Switcher (DE / EN) -->
+            <div class="flex items-center gap-2">
+                <div class="inline-flex border border-concrete-700 bg-concrete-900 p-0.5 font-mono text-xs" role="group" aria-label="Language Switcher">
+                    <button id="btn-de" onclick="setLanguage('de')" class="px-3 py-1.5 font-bold bg-crimson-600 text-white transition-colors cursor-pointer">
+                        DE
+                    </button>
+                    <button id="btn-en" onclick="setLanguage('en')" class="px-3 py-1.5 font-bold text-neutral-400 hover:text-white transition-colors cursor-pointer">
+                        EN
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Thin Hazard Accent Line -->
+        <div class="h-1 w-full hazard-bar opacity-80"></div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main id="top" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-16 sm:space-y-24">
+
+        <!-- 1. HERO SECTION -->
+        <section class="relative border border-concrete-700 bg-concrete-900 scanlines overflow-hidden p-6 sm:p-10 lg:p-14">
+            <!-- Corner Industrial Markers -->
+            <div class="absolute top-3 left-3 font-mono text-[10px] text-neutral-500 uppercase tracking-widest">SYS.ID // KRACHWERK999</div>
+            <div class="absolute top-3 right-3 font-mono text-[10px] text-crimson-500 uppercase tracking-widest flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-crimson-500 animate-pulse"></span>
+                <span data-i18n="status_badge">BOOKINGS OPEN 2026/2027</span>
+            </div>
+
+            <div class="mt-6 grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+                <div class="lg:col-span-8 space-y-5">
+                    <div class="inline-block bg-crimson-600 text-white font-mono text-xs font-bold px-3 py-1 uppercase tracking-widest">
+                        160 BPM SCHRANZ / INDUSTRIAL HARD TECHNO — DRESDEN, DE
+                    </div>
+
+                    <!-- Hero Title with Signature Stylized 999 Vector Emblem -->
+                    <div class="flex flex-wrap items-center gap-4 sm:gap-6">
+                        <h1 class="font-stencil text-5xl sm:text-7xl lg:text-8xl tracking-tight text-white uppercase leading-[0.88]">
+                            KRWK
+                        </h1>
+                        <div class="h-14 sm:h-20 lg:h-24 emblem-999 flex items-center" role="img" aria-label="999 Signature Emblem">
+                            <svg viewBox="0 0 330 135" class="h-full w-auto overflow-visible">
+                                <defs>
+                                    <!-- Subtle Chiseled Stone Bevel Gradient -->
+                                    <linearGradient id="stoneCrimson" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#ef4444"/>
+                                        <stop offset="48%" stop-color="#d92626"/>
+                                        <stop offset="100%" stop-color="#881313"/>
+                                    </linearGradient>
+                                    <linearGradient id="edgeHighlight" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" stop-color="#fca5a5" stop-opacity="0.65"/>
+                                        <stop offset="100%" stop-color="#450a0a" stop-opacity="0.2"/>
+                                    </linearGradient>
+                                </defs>
+
+                                <!-- 1st Aggressive Forward-Slanted Angular '9' -->
+                                <g transform="translate(6, 6)">
+                                    <!-- Dark Stone Extrusion Shadow -->
+                                    <path d="M34,6 L98,6 L85,68 L54,68 L31,124 L4,124 L35,68 L16,68 Z M46,24 L39,50 L69,50 L75,24 Z" fill="#2b0707" transform="translate(5, 5)"/>
+                                    <!-- Main Rugged Red Body -->
+                                    <path d="M34,6 L98,6 L85,68 L54,68 L31,124 L4,124 L35,68 L16,68 Z M46,24 L39,50 L69,50 L75,24 Z" fill="url(#stoneCrimson)" stroke="url(#edgeHighlight)" stroke-width="1.5"/>
+                                    <!-- Sharp Industrial Fractures & Debris -->
+                                    <polygon points="94,14 103,10 98,22" fill="#d92626"/>
+                                    <polygon points="10,104 2,110 8,116" fill="#991b1b"/>
+                                    <path d="M26,34 L39,38 M58,68 L48,79 M22,94 L33,90" stroke="#09090b" stroke-width="2.5" stroke-linecap="square"/>
+                                </g>
+
+                                <!-- 2nd Aggressive Forward-Slanted Angular '9' -->
+                                <g transform="translate(112, 6)">
+                                    <path d="M34,6 L98,6 L85,68 L54,68 L31,124 L4,124 L35,68 L16,68 Z M46,24 L39,50 L69,50 L75,24 Z" fill="#2b0707" transform="translate(5, 5)"/>
+                                    <path d="M34,6 L98,6 L85,68 L54,68 L31,124 L4,124 L35,68 L16,68 Z M46,24 L39,50 L69,50 L75,24 Z" fill="url(#stoneCrimson)" stroke="url(#edgeHighlight)" stroke-width="1.5"/>
+                                    <polygon points="28,2 38,0 33,8" fill="#ef4444"/>
+                                    <path d="M72,14 L66,26 M28,84 L41,79 M49,50 L44,58" stroke="#09090b" stroke-width="2.5" stroke-linecap="square"/>
+                                </g>
+
+                                <!-- 3rd Aggressive Forward-Slanted Angular '9' -->
+                                <g transform="translate(218, 6)">
+                                    <path d="M34,6 L98,6 L85,68 L54,68 L31,124 L4,124 L35,68 L16,68 Z M46,24 L39,50 L69,50 L75,24 Z" fill="#2b0707" transform="translate(5, 5)"/>
+                                    <path d="M34,6 L98,6 L85,68 L54,68 L31,124 L4,124 L35,68 L16,68 Z M46,24 L39,50 L69,50 L75,24 Z" fill="url(#stoneCrimson)" stroke="url(#edgeHighlight)" stroke-width="1.5"/>
+                                    <polygon points="96,42 106,38 100,50" fill="#d92626"/>
+                                    <polygon points="26,122 19,130 30,127" fill="#991b1b"/>
+                                    <path d="M35,58 L48,54 M20,104 L31,99 M78,34 L69,37" stroke="#09090b" stroke-width="2.5" stroke-linecap="square"/>
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <p data-i18n="hero_tagline" class="font-mono text-sm sm:text-base text-neutral-300 max-w-2xl leading-relaxed border-l-2 border-crimson-600 pl-4">
+                        Kompromissloser 160-BPM-Schranz, staubige Industrial-Kicks und rohe Live-Energie direkt aus Dresden. Gründer von Kollektiv 999 & Resident-Mindset für dunkle Keller und kompromisslose Afterhours.
+                    </p>
+
+                    <!-- Action Buttons: Copy Booking Contact & Jump to Form -->
+                    <div class="pt-3 flex flex-wrap gap-3">
+                        <a href="#booking" class="bg-crimson-600 hover:bg-crimson-500 text-white font-mono text-xs sm:text-sm font-bold uppercase tracking-wider px-5 py-3.5 border border-crimson-500 transition-all flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                            <span data-i18n="cta_book">DATE ANFRAGEN</span>
+                        </a>
+                <!-- Direct Platform Matrix (YouTube, SoundCloud, Instagram, TikTok) -->
+                <div class="lg:col-span-4 space-y-2.5 font-mono text-xs">
+                    <div class="text-neutral-500 uppercase tracking-widest mb-2">// OFFICIAL CHANNELS</div>
+                    
+                    <a href="https://youtube.com/@krachwerk999" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-3 bg-concrete-950 border border-concrete-700 hover:border-crimson-600 group transition-colors">
+                        <div class="flex items-center gap-3">
+                            <span class="text-crimson-500 font-bold">[YT]</span>
+                            <span class="text-white font-bold group-hover:text-crimson-500 transition-colors">YOUTUBE // @krachwerk999</span>
+                        </div>
+                        <span class="text-neutral-500 group-hover:text-white">↗</span>
+                    </a>
+
+                    <a href="https://soundcloud.com/krachwerk999" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-3 bg-concrete-950 border border-concrete-700 hover:border-crimson-600 group transition-colors">
+                        <div class="flex items-center gap-3">
+                            <span class="text-crimson-500 font-bold">[SC]</span>
+                            <span class="text-white font-bold group-hover:text-crimson-500 transition-colors">SOUNDCLOUD // krachwerk999</span>
+                        </div>
+                        <span class="text-neutral-500 group-hover:text-white">↗</span>
+                    </a>
+
+                    <a href="https://instagram.com/krachwerk999" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-3 bg-concrete-950 border border-concrete-700 hover:border-crimson-600 group transition-colors">
+                        <div class="flex items-center gap-3">
+                            <span class="text-crimson-500 font-bold">[IG]</span>
+                            <span class="text-white font-bold group-hover:text-crimson-500 transition-colors">INSTAGRAM // @krachwerk999</span>
+                        </div>
+                        <span class="text-neutral-500 group-hover:text-white">↗</span>
+                    </a>
+
+                    <a href="https://tiktok.com/@krachwerk999" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-3 bg-concrete-950 border border-concrete-700 hover:border-crimson-600 group transition-colors">
+                        <div class="flex items-center gap-3">
+                            <span class="text-crimson-500 font-bold">[TT]</span>
+                            <span class="text-white font-bold group-hover:text-crimson-500 transition-colors">TIKTOK // @krachwerk999</span>
+                        </div>
+                        <span class="text-neutral-500 group-hover:text-white">↗</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Key Telemetry Strip -->
+            <div class="mt-10 pt-6 border-t border-concrete-700 grid grid-cols-2 sm:grid-cols-4 gap-4 font-mono">
+                <div>
+                    <div class="text-[10px] text-neutral-500 uppercase">HOMEBASE</div>
+                    <div class="text-sm sm:text-base font-bold text-white">DRESDEN, GERMANY</div>
+                </div>
+                <div>
+                    <div class="text-[10px] text-neutral-500 uppercase">CORE TEMPO</div>
+                    <div class="text-sm sm:text-base font-bold text-crimson-500">160 BPM // RELENTLESS</div>
+                </div>
+                <div>
+                    <div class="text-[10px] text-neutral-500 uppercase">COLLECTIVE</div>
+                    <div class="text-sm sm:text-base font-bold text-white">KOLLEKTIV 999 (FOUNDER)</div>
+                </div>
+                <div>
+                    <div class="text-[10px] text-neutral-500 uppercase">PRIMARY RIG</div>
+                    <div class="text-sm sm:text-base font-bold text-white">DENON DJ PRIME SERIES</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. ARTIST BIO SECTION (SHORT & LONG PRESS TEXTS) -->
+        <section id="bio" class="space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between border-b border-concrete-700 pb-4 gap-4">
+                <div>
+                    <span class="font-mono text-xs text-crimson-500 uppercase tracking-widest">// SECTION 01</span>
+                    <h2 class="font-stencil text-3xl sm:text-4xl text-white uppercase tracking-wide mt-1" data-i18n="bio_heading">ARTIST BIOGRAPHY & PRESS TEXTS</h2>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <button onclick="copyBio('short')" class="font-mono text-xs bg-concrete-850 hover:bg-crimson-600 text-white border border-concrete-700 px-3 py-2 uppercase transition-colors cursor-pointer">
+                        <span data-i18n="copy_short_bio">[COPY SHORT BIO]</span>
+                    </button>
+                    <button onclick="copyBio('long')" class="font-mono text-xs bg-concrete-850 hover:bg-crimson-600 text-white border border-concrete-700 px-3 py-2 uppercase transition-colors cursor-pointer">
+                        <span data-i18n="copy_long_bio">[COPY FULL PRESS BIO]</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                <!-- Short Bio (For Flyers, RA, Lineup Announcements) -->
+                <div class="lg:col-span-5 brutal-card p-6 flex flex-col justify-between space-y-4">
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="font-mono text-xs font-bold text-crimson-500 uppercase tracking-wider" data-i18n="short_bio_label">SHORT BIO (FLYER / LINEUP)</span>
+                            <span class="font-mono text-[10px] text-neutral-500">~65 WORDS</span>
+                        </div>
+                        <p id="short-bio-text" class="text-sm sm:text-base text-neutral-200 leading-relaxed">
+                            <!-- Filled via JS -->
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-concrete-700 font-mono text-xs text-neutral-400 space-y-1">
+                        <div><span class="text-crimson-500">▸</span> HIGHLIGHT: Error 404 Festival</div>
+                        <div><span class="text-crimson-500">▸</span> ROLE: DJ / Producer / Founder of Kollektiv 999</div>
+                        <div><span class="text-crimson-500">▸</span> SLOTS: Peak-Time, Closing & 10 AM Afterhours</div>
+                    </div>
+                </div>
+
+                <!-- Long Bio (For Press Releases, Club Websites, Festival Profiles) -->
+                <div class="lg:col-span-7 brutal-card p-6 space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="font-mono text-xs font-bold text-crimson-500 uppercase tracking-wider" data-i18n="long_bio_label">FULL PRESS BIOGRAPHY</span>
+                        <span class="font-mono text-[10px] text-neutral-500">PRESS READY</span>
+                    </div>
+                    <div id="long-bio-text" class="text-sm sm:text-base text-neutral-300 leading-relaxed space-y-4">
+                        <!-- Filled via JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. COMPACT DIRECT BOOKING / CONTACT FORM -->
+        <section id="booking" class="border-2 border-crimson-600 bg-concrete-900 p-5 sm:p-7 space-y-5">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-concrete-700 pb-3">
+                <div>
+                    <span class="font-mono text-[11px] text-crimson-500 uppercase tracking-widest">// SECTION 02 — DIRECT BOOKING</span>
+                    <h2 class="font-stencil text-2xl sm:text-3xl text-white uppercase tracking-wide" data-i18n="booking_heading">BOOK KRWK 999</h2>
+                </div>
+                <button onclick="copyText('krachwerk999@web.de', 'E-MAIL KRACHWERK999@WEB.DE KOPIERT')" class="font-mono text-xs bg-concrete-950 hover:border-crimson-500 text-neutral-200 border border-concrete-700 px-3 py-2 uppercase transition-colors cursor-pointer self-start sm:self-auto">
+                    📋 krachwerk999@web.de
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
+                <!-- Left: Compact Input Controls -->
+                <form id="booking-form" onsubmit="event.preventDefault();" class="lg:col-span-6 space-y-3 font-mono text-xs">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-neutral-400 uppercase mb-1" data-i18n="lbl_promoter">NAME / PROMOTER *</label>
+                            <input type="text" id="inp-promoter" placeholder="Name / Crew" oninput="updateBookingPreview()" class="w-full bg-concrete-950 border border-concrete-700 focus:border-crimson-500 text-white px-3 py-2 outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-neutral-400 uppercase mb-1" data-i18n="lbl_event">CLUB / EVENT & CITY *</label>
+                            <input type="text" id="inp-event" placeholder="e.g. Sektor / Dresden" oninput="updateBookingPreview()" class="w-full bg-concrete-950 border border-concrete-700 focus:border-crimson-500 text-white px-3 py-2 outline-none">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-neutral-400 uppercase mb-1" data-i18n="lbl_date">DATE *</label>
+                            <input type="date" id="inp-date" oninput="updateBookingPreview()" class="w-full bg-concrete-950 border border-concrete-700 focus:border-crimson-500 text-white px-3 py-2 outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-neutral-400 uppercase mb-1" data-i18n="lbl_slot">SLOT / TIME</label>
+                            <input type="text" id="inp-slot" placeholder="e.g. 02:00 - 04:00 Peak-Time" oninput="updateBookingPreview()" class="w-full bg-concrete-950 border border-concrete-700 focus:border-crimson-500 text-white px-3 py-2 outline-none">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-neutral-400 uppercase mb-1" data-i18n="lbl_msg">SHORT MESSAGE / OFFER</label>
+                        <textarea id="inp-msg" rows="2" placeholder="Lineup info, fee offer, questions..." oninput="updateBookingPreview()" class="w-full bg-concrete-950 border border-concrete-700 focus:border-crimson-500 text-white px-3 py-2 outline-none resize-none"></textarea>
+                    </div>
+                </form>
+
+                <!-- Right: Compact Live Generated Output & One-Click Dispatch -->
+                <div class="lg:col-span-6 flex flex-col justify-between bg-concrete-950 border border-concrete-700 p-4 space-y-3">
+                    <pre id="booking-preview" class="font-mono text-[11px] text-neutral-200 whitespace-pre-wrap leading-snug overflow-x-auto select-all"></pre>
+
+                    <div class="pt-2 border-t border-concrete-700 flex flex-wrap gap-2 font-mono text-xs">
+                        <a id="mailto-link" href="mailto:krachwerk999@web.de" class="flex-1 bg-crimson-600 hover:bg-crimson-500 text-white font-bold py-2.5 px-3 uppercase tracking-wider transition-colors text-center">
+                            <span data-i18n="btn_open_mail">[SEND TO KRACHWERK999@WEB.DE ↗]</span>
+                        </a>
+                        <button onclick="copyBookingInquiry()" class="bg-concrete-800 hover:bg-white hover:text-black text-white border border-concrete-700 font-bold py-2.5 px-3 uppercase tracking-wider transition-colors cursor-pointer text-center">
+                            <span data-i18n="btn_copy_inquiry">[COPY TEXT]</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-concrete-700 bg-concrete-950 mt-16 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-neutral-500">
+            <div>
+                © 2026 <span class="text-white font-bold">KRWK 999 (KRACHWERK999)</span> // DRESDEN, GERMANY. ALL RIGHTS RESERVED.
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="https://youtube.com/@krachwerk999" target="_blank" rel="noopener noreferrer" class="hover:text-crimson-500">YOUTUBE</a>
+                <span>/</span>
+                <a href="https://soundcloud.com/krachwerk999" target="_blank" rel="noopener noreferrer" class="hover:text-crimson-500">SOUNDCLOUD</a>
+                <span>/</span>
+                <a href="https://instagram.com/krachwerk999" target="_blank" rel="noopener noreferrer" class="hover:text-crimson-500">INSTAGRAM</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC (Language Toggle, Clipboard Copy without alert(), Live Booking Generator) -->
+    <script>
+        let currentLang = 'de';
+
+        const translations = {
+            de: {
+                status_badge: "BOOKINGS OPEN 2026/2027",
+                hero_tagline: "Kompromissloser 160-BPM-Schranz, staubige Industrial-Kicks und rohe Live-Energie direkt aus Dresden. Gründer von Kollektiv 999 & Resident-Mindset für dunkle Keller und kompromisslose Afterhours.",
+                cta_book: "DATE ANFRAGEN",
+                bio_heading: "ARTIST BIOGRAFIE & PRESSETEXTE",
+                copy_short_bio: "[KURZ-BIO KOPIEREN]",
+                copy_long_bio: "[PRESSE-BIO KOPIEREN]",
+                short_bio_label: "KURZ-BIO (FLYER / LINEUP)",
+                long_bio_label: "VOLLSTÄNDIGE PRESSE-BIOGRAFIE",
+                short_bio: "KRWK 999 ist ein Dresdner Schranz- und Industrial-Hard-Techno-DJ sowie Producer, bekannt für kompromisslose 160-BPM-Sets und treibende Eigenproduktionen wie „Satisfaction Destruction“ und „Drop The Acid“. Als Gründer von Kollektiv 999 und mit Auftritten wie beim Error 404 Festival steht er für maximale Abriss-Energie – von der Peak-Time bis zur 10-Uhr-Afterhours.",
+                long_bio: [
+                    "Direkt aus dem Dresdner Underground heraus steht KRWK 999 (Krachwerk999) für eine rohe, ungeschminkte Interpretation von modernem Schranz und Industrial Hard Techno. Mit einer konstanten Marschrichtung um die 160 BPM verbindet er hämmernde, verzerrte Kicks mit düsteren Industrial-Texturen und präziser Mixing-Technik auf seinem Denon DJ Prime Setup.",
+                    "Als Gründer des Dresdner Kollektiv 999 gestaltet er die lokale Rave-Kultur aktiv mit und bringt seine kompromisslose Sound-Ästhetik auf Club-Floors und Festivalbühnen – unter anderem mit seinem Abriss-Set beim Error 404 Festival.",
+                    "Neben energiegeladenen Live- und Afterhours-Sets produziert KRWK 999 eigene Tracks und schwere Club-Edits wie „Satisfaction Destruction“, „Drop The Acid“ und „Too Many Drugs“, die speziell für kompromisslose Peak-Time- und Closing-Momente entwickelt wurden."
+                ],
+                booking_heading: "BOOK KRWK 999",
+                lbl_promoter: "NAME / PROMOTER *",
+                lbl_event: "CLUB / EVENT & STADT *",
+                lbl_date: "DATUM *",
+                lbl_slot: "SLOT / SPIELZEIT",
+                lbl_msg: "KURZE NACHRICHT / ANGEBOT",
+                btn_copy_inquiry: "[TEXT KOPIEREN]",
+                btn_open_mail: "[MAIL AN KRACHWERK999@WEB.DE ↗]"
+            },
+            en: {
+                status_badge: "BOOKINGS OPEN 2026/2027",
+                hero_tagline: "Relentless 160 BPM Schranz, gritty industrial kicks, and raw live energy straight out of Dresden, Germany. Founder of Kollektiv 999 & built for dark basements and uncompromising afterhours.",
+                cta_book: "REQUEST DATE",
+                bio_heading: "ARTIST BIOGRAPHY & PRESS TEXTS",
+                copy_short_bio: "[COPY SHORT BIO]",
+                copy_long_bio: "[COPY FULL PRESS BIO]",
+                short_bio_label: "SHORT BIO (FLYER / LINEUP)",
+                long_bio_label: "FULL PRESS BIOGRAPHY",
+                short_bio: "KRWK 999 is a Dresden-based Schranz and Industrial Hard Techno DJ & producer known for relentless 160 BPM sets and hard-hitting originals like 'Satisfaction Destruction' and 'Drop The Acid'. As founder of Kollektiv 999 and veteran of the Error 404 Festival, he delivers pure warehouse demolition from peak-time to 10 AM afterhours.",
+                long_bio: [
+                    "Emerging from the depths of Dresden's underground scene, KRWK 999 (Krachwerk999) stands for a raw, unfiltered approach to modern Schranz and Industrial Hard Techno. Operating at a relentless 160 BPM, he fuses distorted, punishing kicks with dark industrial textures and razor-sharp mixing on his Denon DJ Prime rig.",
+                    "As the founder of Dresden's Kollektiv 999, he actively shapes the local rave movement while bringing his uncompromising sound to club floors and festival stages—highlighted by his high-voltage performance at Error 404 Festival.",
+                    "Alongside his marathon live and afterhours sessions, KRWK 999 crafts original tracks and heavy club edits including 'Satisfaction Destruction', 'Drop The Acid', and 'Too Many Drugs'—engineered specifically for peak-time and closing devastation."
+                ],
+                booking_heading: "BOOK KRWK 999",
+                lbl_promoter: "NAME / PROMOTER *",
+                lbl_event: "CLUB / EVENT & CITY *",
+                lbl_date: "DATE *",
+                lbl_slot: "SLOT / TIME",
+                lbl_msg: "SHORT MESSAGE / OFFER",
+                btn_copy_inquiry: "[COPY TEXT]",
+                btn_open_mail: "[SEND TO KRACHWERK999@WEB.DE ↗]"
+            }
+        };
+// ... existing code ... -->
+            // Update Short & Long Bio
+            document.getElementById('short-bio-text').textContent = t.short_bio;
+            const longBioContainer = document.getElementById('long-bio-text');
+            longBioContainer.innerHTML = t.long_bio.map(p => `<p>${p}</p>`).join('');
+
+            updateBookingPreview();
+        }
+
+        function copyBio(type) {
+            const t = translations[currentLang];
+            if (type === 'short') {
+                copyText(t.short_bio, currentLang === 'de' ? 'KURZ-BIO KOPIERT' : 'SHORT BIO COPIED');
+            } else {
+                copyText(t.long_bio.join('\n\n'), currentLang === 'de' ? 'PRESSE-BIO KOPIERT' : 'FULL PRESS BIO COPIED');
+            }
+        }
+
+        function updateBookingPreview() {
+// ... existing code ... -->
